@@ -24,7 +24,7 @@ export const playList = [
         imgSrc      : './Audio/Images/boulevardOfBrokenDreams.jpg'
     },
     {
-    musicTitle      : 'မငိုပါနဲ့တော့',
+    musicTitle      : 'Ma Ngo Par Nae Tok',
         artist      : 'SCY',
         src         : './Audio/song/မငိုပါနဲ့တော့.mp3',
         imgSrc      : './Audio/Images/မငိုပါနဲ့တော့.jpg'
