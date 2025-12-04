@@ -10,7 +10,7 @@
     <style>
         #musicImgBox{
             animation: 5s infinite alternate-reverse ease-in-out;
-            /* color: rgb(255, 122, 0) , rgb(139, 92, 246) , rgb(217, 70, 239); */
+            color: rgb(255, 122, 0) , #121212,  rgb(139, 92, 246) , rgb(217, 70, 239);
         }
         @keyframes shadowAnimate {
             25% {
@@ -30,7 +30,7 @@
         extend: {
           colors: {
             // Adding a custom color
-            'main'          : '#0B0C15',
+            'main'          : '#121212',
             'card'          : '#ff7a00',
             'soft-overlay'  : '#23242F',
             'neon'          : '#D946EF',
@@ -53,14 +53,15 @@
   </script>
 </head>
 <body class="w-screen h-screen bg-main flex flex-col">
-    <section class="mainSection h-[20%] w-100">
-        <article class=" text-center py-5 pt-10">
-            <h3 class="text-pure-white font-semibold text-xl">Music Player</h3>
-            <small class="text-mist-gray"><h5>Nyan Min Htet</h5></small>
+    <section class="mainSection h-[10%] w-100">
+        <article class=" text-center pt-5">
+            <h3 class="text-red-500 font-semibold text-lg">Music Player</h3>
+            <small class="text-pure-white font-"><h5>Nyan Min Htet</h5></small>
         </article>
     </section>
-    <section class="mainSection h-[40%] flex justify-center items-center">
+    <section class="mainSection h-[50%] flex justify-center items-center">
 
+        <!-- Music Image Background -->
         <div id="musicImgBox" class="w-64 h-64 rounded-full ">
             <div id="musicBackground" class="bg-center bg-cover w-full
                     overflow-hidden h-full border rounded-full
@@ -71,31 +72,30 @@
                 <div class="w-14 h-14 rounded-full bg-main border border-4"></div>
         </div>
         </div>
-        <!-- Music Image Background -->
-        
+
     </section>
     
     <section class="mainSection h-[40%]">
         
-        <div class="pt-10">
+        <div>
             <article class=" text-center">
-            <h3 id="musicTitle" class="text-pure-white font-semibold text-xl"></h3>
-            <small class="text-mist-gray"><h5 id="artist"></h5></small>
+            <h2 id="musicTitle" class="text-pure-white font-semibold text-2xl mb-1"></h3>
+            <small class="text-pure-white"><h5 id="artist"></h5></small>
         </article>
         </div>
         <!-- timeline Box -->
         <article class="p-3 flex justify-center items-center space-x-2">
             <!-- animation line -->
              <span class="text-mist-gray"><small id="updateDuration">00:00</small></span>
-            <div id="progressContainer" class="w-64 h-1 mx-auto bg-white rounded-xl hover:cursor-grab">
-                <div id="animateProgressBar" class="w-[0%] bg-warning h-1 rounded-xl relative
+            <div id="progressContainer" class="w-80 h-1 mx-auto bg-soft-overlay rounded-xl hover:cursor-grab">
+                <div id="animateProgressBar" class="w-[0%] bg-pure-white h-1 rounded-xl relative
                             before:content-[''] 
                             before:absolute 
                             before:top-0 
                             before:right-0
                             before:w-2 
                             before:h-2 
-                            before:bg-warning
+                            before:bg-pure-white
                             before:rounded-full 
                             before:-mt-0.5
                             before:-mr-1
@@ -105,20 +105,32 @@
         </article>
         <!-- media play -->
         <article>
-            <div class="p-2 flex items-center justify-center space-x-4">
-                <!-- previous -->
-                <button id="previous" type="button">
-                    <i class="fa-solid fa-backward-step text-pure-white text-2xl hover:text-gray-400 transition"></i>
+            <div class="p-2 flex items-center justify-around space-x-10 w-80 mx-auto">
+                <!-- shuffle -->
+                <button id="shuffleBtn" class="" type="button">
+                    <i class="fa-solid fa-shuffle text-red-800 text-lg hover:text-red-600 transition"></i>
                 </button>
-                <!-- play -->
+                
+                    <div class="flex items-center justify-center space-x-6">
+                                    <!-- previous -->
+                                <button id="previous" type="button">
+                                    <i class="fa-solid fa-backward-step text-red-500 text-2xl hover:text-red-800 transition"></i>
+                                </button>
 
-                <button id="audioBtn" type="button">
-                <!-- Js will implement this innerHTML -->
-                </button>
+                                <!-- play -->
+                                <button id="audioBtn" type="button">
+                                            <!-- Js will implement this innerHTML -->
+                                </button>
 
-                <!-- next -->
-                <button id="next" type="button"">
-                    <i class="fa-solid fa-forward-step text-pure-white text-2xl hover:text-gray-400 transition"></i>
+                                <!-- next -->
+                                <button id="next" type="button"">
+                                    <i class="fa-solid fa-forward-step text-red-500 text-2xl hover:text-red-800 transition"></i>
+                                </button>
+                    </div>
+
+               <!-- loop -->
+                <button id="loop" class="mx-10" type="button">
+                    <i class="fa-solid fa-rotate text-red-800 text-lg hover:text-red-600 transition"></i>
                 </button>
                 <audio id="audioTag" src="./Audio/song/Avenged_Sevenfold_-_A_Little_Piece_Of_Heaven_Sub_Español(256k).mp3"></audio>
             </div>
