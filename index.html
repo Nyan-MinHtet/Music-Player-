@@ -3,11 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <title>Music Player Project</title>
+    <style>
+        #musicImgBox{
+            animation: 5s infinite alternate-reverse ease-in-out;
+            color: rgb(255, 122, 0) , #121212,  rgb(139, 92, 246) , rgb(217, 70, 239);
+        }
+        @keyframes shadowAnimate {
+            25% {
+                box-shadow: 0 0 20px 2px rgba(238, 240, 97, 0.748) ;
+            }
+            50% {
+                box-shadow: 0 0 20px 2px rgba(138, 92, 246, 0.667);
+            }
+            75% {
+                box-shadow: 0 0 20px 2px rgba(216, 70, 239, 0.641);
+            }
+        }
+    </style>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Adding a custom color
+            'main'          : '#121212',
+            'card'          : '#ff7a00',
+            'soft-overlay'  : '#23242F',
+            'neon'          : '#D946EF',
+            'eletric-violet': '#8B5CF6',
+            'cyber-cyan'    : '#06B6D4',
+            'warning'       : '#F59E0B',
+            'pure-white'    : '#FFFFFF',
+            'mist-gray'     : '#9CA3AF',
+          },
+          boxShadow:{
+            'orange'          : '0 0 20px 5px rgb(245, 158, 11)',
+          },
+          fontFamily: {
+             // Adding a custom font
+            sans: ['Graphik', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
 </head>
-<body>
+<body class="w-screen h-screen bg-main grid grid-cols-1 md:grid-cols-2">
+
+    <section class="mainSection grid items-center justify-items-center md:order-2 md:justify-items-start">
+        <article class="text-center md:text-start md:mt-20">
+            <h3 class="text-pure-white font-semibold text-xl md:text-2xl md:mb-1">Music Player</h3>
+            <small class="text-mist-gray md:text-md"><h5>Nyan Min Htet</h5></small>
+        </article>
+    </section>
     
+    <section class="mainSection grid justify-items-center items-center w-100 md:order-1 md:row-span-2">
+
+        <!-- Music Image Background -->
+        <div id="musicImgBox" class="w-64 h-64 md:w-96 lg:w-[32rem] md:h-96 lg:h-[32rem] rounded-full ">
+            <div id="musicBackground" class="bg-center bg-cover w-full
+                    overflow-hidden h-full border rounded-full
+                    flex justify-center items-center
+                    border border-2 relative
+                     ">
+                <!-- Middle Rounded Border -->
+                <div class="w-14 h-14 rounded-full bg-main border border-4"></div>
+        </div>
+        </div>
+
+    </section>
+    
+    <section class="mainSection md:order-3">
+        
+        <div class="md:mb-4">
+            <article class="text-center md:text-start">
+            <h2 id="musicTitle" class="text-pure-white font-semibold text-2xl md:text-4xl md:mb-3"></h3>
+            <small class="text-mist-gray md:text-xl"><h5 id="artist"></h5></small>
+        </article>
+        </div>
+        <!-- timeline Box -->
+        <article class="p-3 flex justify-center items-center space-x-2 md:justify-start">
+            <!-- animation line -->
+             <span class="text-mist-gray md:text-xl"><small id="updateDuration">00:00</small></span>
+            <div id="progressContainer" class="w-80 md:w-96 h-1 mx-auto bg-soft-overlay rounded-xl hover:cursor-grab">
+                <div id="animateProgressBar" class="w-[0%] bg-red-500 h-1 rounded-xl relative
+                            before:content-[''] 
+                            before:absolute 
+                            before:top-0 
+                            before:right-0
+                            before:w-2 
+                            before:h-2 
+                            before:bg-pure-white
+                            before:rounded-full 
+                            before:-mt-0.5
+                            before:-mr-1
+                            transition"></div>
+            </div>
+            <span class="text-mist-gray md:text-xl"><small id="fixDuration"></small></span>
+        </article>
+        <!-- media play -->
+        <article>
+            <div class="p-2 flex items-center justify-around space-x-10 w-80 mx-auto md:m-0">
+                <!-- shuffle -->
+                <button id="shuffleBtn" type="button">
+                    <i class="fa-solid fa-shuffle text-red-800 text-lg md:text-xl hover:text-red-600 transition"></i>
+                </button>
+                
+                    <div class="flex items-center justify-center space-x-6">
+                                    <!-- previous -->
+                                <button id="previous" type="button">
+                                    <i class="fa-solid fa-backward-step text-red-500 text-2xl md:text-3xl hover:text-red-800 transition"></i>
+                                </button>
+
+                                <!-- play -->
+                                <button id="audioBtn" type="button">
+                                            <!-- Js will implement this innerHTML -->
+                                </button>
+
+                                <!-- next -->
+                                <button id="next" type="button"">
+                                    <i class="fa-solid fa-forward-step text-red-500 text-2xl md:text-3xl hover:text-red-800 transition"></i>
+                                </button>
+                    </div>
+
+               <!-- loop -->
+                <button id="loop" class="mx-10" type="button">
+                    <i class="fa-solid fa-rotate text-red-800 text-lg hover:text-red-600 transition"></i>
+                </button>
+                <audio id="audioTag" src="./Audio/song/Avenged_Sevenfold_-_A_Little_Piece_Of_Heaven_Sub_Español(256k).mp3"></audio>
+            </div>
+        </article>
+    </section>
 </body>
-<script src="script.js"></script>
+<script src="script.js" type="module">
+</script>
+
 </html>
